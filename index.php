@@ -14,38 +14,41 @@
       <div class="col">
         <h1>Cadastro</h1>
         <form class="row g-3" action="" method="">
-          <div class="col-md-4">
-            <label for="validationServer01" class="form-label">Nome Completo:</label>
-            <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Digite seu Nome Completo" required>
-            <div class="valid-feedback">
-              Primeira etapa ok!
-            </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Digite seu Nome Completo</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Digite seu Endereço:</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <label for="floatingInput">Digite seu Telefone:</label>
+            <input type="text" class="form-control" id="floatingInput">
           </div>
           
-          <div class="col-md-4">
-            <label for="validationServerUsername" class="form-label">Username</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend3"><i class="bi bi-person"></span>
-              <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-              <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                Por favor, Insira seu nome de Usuário.
-              </div>
-            </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Digite seu E-mail:</label>
           </div>
-          
+
+          <div class="form-floating">
+            <input type="date" class="form-control" id="floatingPassword">
+            <label for="floatingPassword">Digite sua Data de Nascimento:</label>
+          </div>
+
           <div class="col-12">
             <div class="form-check">
-              <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-              <label class="form-check-label" for="invalidCheck3">
-                Ao clicar nesta caixa, você esta aceitando nossos <a href="">Termos de Uso</a>e <a href="">Termos de Privacidade</a>do sistema de cadastro do Curso de TI Online. Isto esta de acordo com as Leis 12.965/2014 e 13.709/2018, que regulam o uso da Internet e o tratamento de dados pessoais no Brasil.
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+              <label class="form-check-label" for="invalidCheck2">
+                Ao clicar nesta caixa, você esta aceitando nossos <a href="">Termos de Uso</a> e os <a href="">Termos de Privacidade</a> do sistema de cadastro do Curso de TI Online. Isto esta de acordo com as Leis 12.965/2014 e 13.709/2018, que regulam o uso da Internet e o tratamento de dados pessoais no Brasil.
               </label>
-              <div id="invalidCheck3Feedback" class="invalid-feedback">
-                You must agree before submitting.
-              </div>
             </div>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-success" type="submit">Salvar</button>
           </div>
         </form>
       </div>
