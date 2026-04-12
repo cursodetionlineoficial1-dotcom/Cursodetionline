@@ -1,3 +1,9 @@
+<?php
+
+  include_once "conexao.php";
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -10,17 +16,17 @@
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row g-3 align-items-center justify-content-center mt-3">
       <div class="col">
-        <h1>Cadastro</h1>
-        <form class="row g-3" action="" method="">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <h1 style="margin-bottom: 20px; margin-top: 20px;">Cadastro</h1>
+        <form class="row g-2" action="cadastro_script.php" method="POST">
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="floatingInput">
             <label for="floatingInput">Digite seu Nome Completo</label>
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="floatingInput">
             <label for="floatingInput">Digite seu Endereço:</label>
           </div>
 
@@ -29,26 +35,26 @@
             <input type="text" class="form-control" id="floatingInput">
           </div>
           
-          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Digite seu E-mail:</label>
+          <div class="form-floating mb-2">
+            <input type="email" class="form-control" id="floatingEmail">
+            <label for="floatingEmail">Digite seu E-mail:</label>
           </div>
 
-          <div class="form-floating">
-            <input type="date" class="form-control" id="floatingPassword">
-            <label for="floatingPassword">Digite sua Data de Nascimento:</label>
+          <div class="form-floating mb-2">
+            <input type="date" class="form-control" id="floatingDate">
+            <label for="floatingDate">Digite sua Data de Nascimento:</label>
           </div>
 
-          <div class="col-12">
+          <div class="col-12 mb-2">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
               <label class="form-check-label" for="invalidCheck2">
-                Ao clicar nesta caixa, você esta aceitando nossos <a href="">Termos de Uso</a> e os <a href="">Termos de Privacidade</a> do sistema de cadastro do Curso de TI Online. Isto esta de acordo com as Leis 12.965/2014 e 13.709/2018, que regulam o uso da Internet e o tratamento de dados pessoais no Brasil.
+                Ao clicar nesta caixa, você estará aceitando nossos <a href="">Termos de Uso</a> e os <a href="">Termos de Privacidade</a> do sistema de cadastro do Curso de TI Online. Isto esta de acordo com as Leis 12.965/2014 e 13.709/2018, que regulam o uso da Internet e o tratamento de dados pessoais no Brasil.
               </label>
             </div>
           </div>
-          <div class="col-12">
-            <button class="btn btn-success" type="submit">Salvar</button>
+          <div class="col-12 mb-3">
+          <button type="button" class="btn btn-outline-success">Salvar</button>
           </div>
         </form>
       </div>
