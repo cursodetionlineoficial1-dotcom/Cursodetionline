@@ -1,3 +1,9 @@
+<?php
+
+  include_once "./connect.php";
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -9,21 +15,31 @@
   </head>
   <body>
     <h1>Cadastrar</h1>
-    <form action="" method="post">
+    <form action="processar.php" method="post">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" placeholder="Digite seu nome" requered>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu Nome Completo" size="45" requered><br>
+      <small>No campo acima é necessário ter nome completo com até 500 caractéres.</small><br><br>
 
       <label for="e-mail">E-mail:</label>
-      <input type="email" id="email" placeholder="Digite seu E-mail" requered>
+      <input type="email" id="email" name="email" placeholder="Digite seu E-mail" size="50" value="cursodetionlineoficial1@gmail.com" requered><br><br>
 
-      <label for="usuario">Usuário:</label>
-      <input type="text" id="usuario" placeholder="Digite seu nome de Usuario" requered>
-
+      <label for="idade">Idade:</label>
+      <input type="radio" name="idade" id="idade1" requered>
+      <label for="idade1">Entre 10 a 20 anos</label>
+      <input type="radio" name="idade" id="idade2" requered>
+      <label for="idade2">Entre 20 a 40 anos</label>
+      <input type="radio" name="idade" id="idade3" requered>
+      <label for="idade3">40 a 60</label>
+      <input type="radio" name="idade" id="idade+" requered>
+      <label for="idade+">60 +</label><br><br>
+      
       <label for="senha">Senha:</label>
-      <input type="password" id="senha" placeholder="Digite sua senha" requered>
+      <input type="password" name="senha" id="senha" placeholder="Digite sua senha" requered><br><br>
 
-      <label for="data_nascimento">Data de Nascimento:</label>
-      <input type="date" id="data_nascimento" placeholder="dd/mm/aaaa" requered>
+      <label for="cpf">CPF:</label>
+      <input type="text" name="cpf" id="cpf" requered title="Digite o CPF no formato xxx.xxx.xxx-xx" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="40"><br><br>
+
+      <input type="submit" name="btnCadastrar" value="Salvar">
     </form>
   </body>
 </html>
