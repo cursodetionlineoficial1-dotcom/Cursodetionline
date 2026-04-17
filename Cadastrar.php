@@ -1,6 +1,6 @@
 <?php
 
-  include_once "./connect.php";
+  include_once "./conexao.php";
 
 ?>
 
@@ -15,30 +15,70 @@
   </head>
   <body>
     <h1>Cadastrar</h1>
-    <form action="processar.php" method="post">
+
+    <?php
+      // Receber os dados do formulário
+      $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+      //Verificar se o usuário clicou no botão
+      if(!empty($dados['btnCadastrar']))
+      {
+        //var_dump($dados);
+        $empty_input = false; //Significa que não surgiu erro
+
+        $dados = array_map('trim', $dados);
+        if(in_array("", $dados))
+        {
+          $empty_input = true;
+          echo "<p style='color: #f00;'>Erro! Necessário preencher todos os campos.</p>";
+        }
+        //Validando email. Se o usuário digitar o email incorretamente, não será permitido realizar o cadastro
+        //Ele verificará se o usuário digitou o campo com as características de um e-mail válido ou correto.
+        elseif(!filter_var($dados['email'], FILTER_VALIDATE_EMAIL))
+        {
+          $empty_input = true;
+          echo "<p style='color: red;'>Erro! Necessário preencher o campo com um e-mail válido.</p>";
+        }
+        
+        // Se for diferente da váriavel empty_input = true, então o usuário poderá cadastrar
+        if(!$empty_input)
+        {
+          // Inserindo os dados no banco de dados
+          $query_usuario = "INSERT INTO dados_usuarios (nome, email) VALUES (:nome, :email)";
+
+          $cad_usuario = $con->prepare($query_usuario);
+          $cad_usuario->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
+          $cad_usuario->bindParam(':email', $dados['email'], PDO::PARAM_STR);
+          $cad_usuario->execute();
+
+          if($cad_usuario->rowCount())
+          {
+            echo "<p style='#00ff55;'>Parabéns! Seu cadastro foi feito com sucesso!</p>";
+            unset($dados);
+          }
+          else
+          {
+            echo "<p style='#f00;'>Erro! Infelizmente você não conseguiu se cadastrar em nosso sistema! Verifique os campos e tente novamente.</p>";
+          }
+        }
+      }
+    ?>
+
+    <form name="cad-usuario" method="POST" action="">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" placeholder="Digite seu Nome Completo" size="45" requered><br>
-      <small>No campo acima é necessário ter nome completo com até 500 caractéres.</small><br><br>
-
-      <label for="e-mail">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="Digite seu E-mail" size="50" value="cursodetionlineoficial1@gmail.com" requered><br><br>
-
-      <label for="idade">Idade:</label>
-      <input type="radio" name="idade" id="idade1" requered>
-      <label for="idade1">Entre 10 a 20 anos</label>
-      <input type="radio" name="idade" id="idade2" requered>
-      <label for="idade2">Entre 20 a 40 anos</label>
-      <input type="radio" name="idade" id="idade3" requered>
-      <label for="idade3">40 a 60</label>
-      <input type="radio" name="idade" id="idade+" requered>
-      <label for="idade+">60 +</label><br><br>
-      
-      <label for="senha">Senha:</label>
-      <input type="password" name="senha" id="senha" placeholder="Digite sua senha" requered><br><br>
-
-      <label for="cpf">CPF:</label>
-      <input type="text" name="cpf" id="cpf" requered title="Digite o CPF no formato xxx.xxx.xxx-xx" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="40"><br><br>
-
+      <input type="text" id="nome" name="nome" value="<?php 
+      if(isset($dados['nome']))
+      {
+        echo $dados['nome'];
+      }
+      ?>"><br><br>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" value="<?php 
+      if(isset($dados['email']))
+      {
+        echo $dados['email'];
+      }
+      ?>"><br><br>
       <input type="submit" name="btnCadastrar" value="Salvar">
     </form>
   </body>
